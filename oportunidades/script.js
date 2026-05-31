@@ -30,3 +30,44 @@ db.collection("Oportunidades").get().then(snapshot => {
   });
 
 });
+
+const inputSearch = document.getElementById("searchInput");
+const divCategories = document.getElementById("categories");
+
+let todasOportunidades = [];
+let categoriaAtiva = '';
+let termoBusca = '';
+
+searchInput.addEventListener("input", function() {
+  termoBusca = searchInput.value
+  aplicarFiltros();
+});
+
+divCategories.addEventListener("click", function(evento) {
+  const pillClicked = evento.target.closest(".pill");
+  if (!pillClicked) return
+
+  categoriaAtiva = pillClicked.dataset.categoria
+  aplicarFiltros();
+
+  console.log("Categoria ativa:", categoriaAtiva);
+});
+
+function aplicarFiltros() {
+  let resultado = todasOportunidades;
+
+  if (categoriaAtiva !== '') {
+    resultado = resultado.filter(function (op) {
+      return op.categoria === categoriaAtiva;
+    })
+  }
+
+
+if (termoBusca !== '' ) {
+  resultado = resultado.filter(function (op) {
+    return op.titulo.toLowerCase().includes(termoBusca.toLowerCase())
+  })
+}
+
+  renderOportunidades(resultado);
+}
