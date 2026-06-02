@@ -7,14 +7,21 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
     <link rel="stylesheet" href="oportunities_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="../src/orbitalogofavicon.svg">
 </head>
 <body>
-    <h1>Oportunidades</h1>
-    <p>Tá na mão!</p>
+
+    <div class="header">
+        <h1>Oportunidades</h1>
+    </div>
 
     <section id="filtros">
 
-        <input type="text" id="searchInput" placeholder="Buscar...">
+        <div class="input-container">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchInput" placeholder="Buscar..." autocomplete="off">
+        </div>
 
         <div id="categories">
             <button class="active pill" data-categoria="">Tudo</button>
@@ -29,5 +36,7 @@
     <div id="cards"></div>
 
     <script src="script.js"></script>
+
+    <script src="../src/navbar.js"></script>
 </body>
 </html>
